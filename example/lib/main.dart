@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:pin_input_text_field/pin_input_text_field.dart';
 import 'package:sms_autofill/sms_autofill.dart';
 
 void main() => runApp(MyApp());
@@ -20,8 +19,9 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  String _code="";
+  String _code = "";
   String signature = "{{ app signature }}";
+  TextEditingController controller = TextEditingController();
 
   @override
   void initState() {
@@ -31,6 +31,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void dispose() {
     SmsAutoFill().unregisterListener();
+    controller.dispose();
     super.dispose();
   }
 
@@ -52,9 +53,12 @@ class _HomePageState extends State<HomePage> {
               PhoneFieldHint(),
               Spacer(),
               PinFieldAutoFill(
+                controller: controller,
+                enableInteractiveSelection: false,
                 decoration: UnderlineDecoration(
                   textStyle: TextStyle(fontSize: 20, color: Colors.black),
-                  colorBuilder: FixedColorBuilder(Colors.black.withOpacity(0.3)),
+                  colorBuilder:
+                      FixedColorBuilder(Colors.black.withOpacity(0.3)),
                 ),
                 currentCode: _code,
                 onCodeSubmitted: (code) {},
@@ -97,7 +101,8 @@ class _HomePageState extends State<HomePage> {
               ),
               ElevatedButton(
                 onPressed: () {
-                  Navigator.of(context).push(MaterialPageRoute(builder: (_) => CodeAutoFillTestPage()));
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (_) => CodeAutoFillTestPage()));
                 },
                 child: Text("Test CodeAutoFill mixin"),
               )
@@ -114,7 +119,8 @@ class CodeAutoFillTestPage extends StatefulWidget {
   _CodeAutoFillTestPageState createState() => _CodeAutoFillTestPageState();
 }
 
-class _CodeAutoFillTestPageState extends State<CodeAutoFillTestPage> with CodeAutoFill {
+class _CodeAutoFillTestPageState extends State<CodeAutoFillTestPage>
+    with CodeAutoFill {
   String? appSignature;
   String? otpCode;
 
