@@ -62,6 +62,7 @@ class PinFieldAutoFill extends StatefulWidget {
   final String? smsCodeRegexPattern;
   final List<TextInputFormatter>? inputFormatters;
   final ValueChanged<String>? onChanged;
+  final EdgeInsets scrollPadding;
 
   const PinFieldAutoFill({
     Key? key,
@@ -82,6 +83,7 @@ class PinFieldAutoFill extends StatefulWidget {
     this.codeLength = 6,
     this.smsCodeRegexPattern,
     this.onChanged,
+    this.scrollPadding = const EdgeInsets.all(20.0),
   }) : super(key: key);
 
   @override
@@ -113,6 +115,7 @@ class _PinFieldAutoFillState extends State<PinFieldAutoFill> with CodeAutoFill {
       inputFormatters: widget.inputFormatters,
       textInputAction: widget.textInputAction,
       onSubmit: widget.onCodeSubmitted,
+      scrollPadding: widget.scrollPadding,
     );
   }
 
