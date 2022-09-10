@@ -91,9 +91,11 @@ packages:
   pin_input_text_field:
     dependency: transitive
     description:
-      path: "../pin_input_text_field-4.1.2"
-      relative: true
-    source: path
+      path: "."
+      ref: master
+      resolved-ref: "562242286a03157718b27d84c10de110c33530e1"
+      url: "https://github.com/P-B1101/pin_input_text_field.git"
+    source: git
     version: "4.1.2"
   sky_engine:
     dependency: transitive
@@ -106,7 +108,7 @@ packages:
       path: ".."
       relative: true
     source: path
-    version: "2.2.0"
+    version: "2.2.1"
   source_span:
     dependency: transitive
     description:

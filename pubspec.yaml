@@ -1,6 +1,6 @@
 name: sms_autofill
 description: Flutter plugin to provide SMS code autofill support
-version: 2.2.0
+version: 2.2.1
 homepage: https://github.com/jaumard/sms_autofill
 publish_to: none
 
@@ -10,7 +10,10 @@ environment:
 
 dependencies:
   pin_input_text_field:
-    path: pin_input_text_field-4.1.2/
+    git: 
+      # url: http://gitlab.citydi.com/p.alipour/pin_input_text_field.git
+      url: https://github.com/P-B1101/pin_input_text_field.git
+      ref: master
     #git:
     #  url: https://github.com/TinoGuo/pin_input_text_field
     #  ref: dev
